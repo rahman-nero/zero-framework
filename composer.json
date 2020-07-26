@@ -1,0 +1,27 @@
+{
+    "name": "dikae/framefork",
+    "description": "PHP MVC-Framework",
+    "type": "project",
+    "license": "MTI",
+    "authors": [
+        {
+            "name": "Rahman",
+            "email": "dikaevr053@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload" : {
+        "psr-4" : {
+            "App\\" : "app/",
+            "Zero\\" : "vendor/zero/",
+            "Zero\\Route\\" : "vendor/zero/routing/"
+        },
+
+        "files" : [
+            "config/constant.php",
+            "web/routes.php",
+            "vendor/zero/libs/functions.php"
+        ]
+    }
+    
+}
