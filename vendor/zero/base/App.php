@@ -3,6 +3,7 @@
 namespace Zero\base;
 use Zero\Route\Router;
 use Zero\Registry;
+use Zero\Db;
 
 /**
  * Main-class which started, if user on site
