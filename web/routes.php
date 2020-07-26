@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 use Zero\Route\Router;
 
 Router::add('^product/(?P<alias>[a-z0-9-]+)/?$', ['controller' => 'Product', 'action' => 'index']);
