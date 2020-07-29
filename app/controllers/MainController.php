@@ -10,11 +10,11 @@ class MainController extends AppController
 {
 	public function indexAction()
 	{
-		$main = 'Hello world';
-		$a = new Main();
-		$s = $a->findAll();
-		dd($s);
-		$this->vars(compact('main'));
+		$product = new Main();
+		$result = $product->findAll();
+
+		$insert = $product->insert(['category_id' => 1]);
+		// dd($result);
 	}
 }
 

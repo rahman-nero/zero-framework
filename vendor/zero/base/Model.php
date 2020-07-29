@@ -33,4 +33,29 @@ abstract class Model
 		}
 		return $this->db->query($sql);
 	}
+
+
+	public function newSql($sql, $params = []) {
+		return $this->db->query($sql, $params);
+	}
+
+
+	public function insert(array $fields) {
+		if (is_assoc($fields)) {
+			$q_values = '';
+			$q_fields = '';
+
+			foreach ($fields as $field => $val) {
+				$q_fields .= "`$field`,";
+				$q_values .= is_numeric($val) ? $val . ',' : "'$val',";
+			}
+			$q_values = rtrim($q_values, ',');
+			$q_fields = rtrim($q_fields, ',');
+			$sql = "INSERT INTO `{$this->table}` ({$q_fields}) VALUES ({$q_values})";		
+			return $this->db->execute($sql);
+
+		}
+		return false;
+	}
+
 }
