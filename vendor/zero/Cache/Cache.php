@@ -2,11 +2,11 @@
 namespace Zero\Cache;
 
 /**
- * 
+ * Class cache
  */
 class Cache
 {
-	
+	// create new cache-file, work before $time
 	public function set($key, $content, $time = 3600)
 	{
 		$filename = CACHE . '/' . md5($key) . '.txt';
@@ -18,7 +18,7 @@ class Cache
 		}
 		return false;
 	}
-
+	// get cache-file, if end-time < now time - file will delete
 	public function get($key)
 	{
 		$file = CACHE . '/' . md5($key) . '.txt';
@@ -30,6 +30,16 @@ class Cache
             unlink($file);
         }
         return false;
+	}
+
+	// function for delete cache-file
+	public function delete($key) {
+		$filename = CACHE . '/' . md5($key) . '.txt';
+		if (is_file($filename)) {
+			unlink($filename);
+			return true;
+		}
+		return false;
 	}
 
 }

@@ -7,10 +7,11 @@ namespace Zero\base;
  */
 class View
 {
-	public $layout;
-	public $view;
+	public $layout; // Layout
+	public $view; // view
+	public $meta = []; // view
 	
-	public function __construct($route, $view, $layout)
+	public function __construct($route, $view, $layout, $meta = [])
 	{
 		$this->route = $route;
 		$this->view = $view;
@@ -19,8 +20,13 @@ class View
 		} else {
 			$this->layout = $layout;
 		}
+		$this->meta = $meta;
 	}
 
+	/*
+	* connects the view and the template, according to the data received from the controller
+	* $vars - vars get from controller for work in view
+	*/
 	public function run(array $vars) {
 		extract($vars);
 		if ($this->layout !== false) {
@@ -43,5 +49,16 @@ class View
 
 		}
 	}
+
+	// Inserts meta tags in layout - if to call this method 
+	public function getMeta() {
+		if (!empty($this->meta)) {
+			echo "<title>{$this->meta['title']}</title>" . PHP_EOL . "\t";
+			echo "<meta name='description' content='{$this->meta['desc']}'>" . PHP_EOL . "\t";
+			echo "<meta name='keywords' content='{$this->meta['keywords']}'>";
+		}
+	}
+
+
 }
 

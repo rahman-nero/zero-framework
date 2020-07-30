@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<?=$this->getMeta()?>
 	<meta charset="UTF-8">
-	<title>hello</title>
 </head>
 <body>
 	<?=$content?>
+	<?=PHP_EOL?>
 </body>
 </html>

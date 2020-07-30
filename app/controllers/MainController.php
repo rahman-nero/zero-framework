@@ -11,7 +11,7 @@ class MainController extends AppController
 	public function indexAction()
 	{
 		$product = new Main();
-		// $result = $product->delete('`id`', [1,2,3, 'asdasd']);
+		$this->setMeta('asdasd', 'asdasdad', 'asdasdasd');
 		dd($result);
 	}
 }

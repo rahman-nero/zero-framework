@@ -108,7 +108,6 @@ abstract class Model
 			}
 		}
 		return true; // если все хорошо - то все хорошо) 
-
 	}
 
 }
