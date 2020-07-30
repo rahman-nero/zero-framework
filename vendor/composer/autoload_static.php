@@ -7,6 +7,9 @@ namespace Composer\Autoload;
 class ComposerStaticInitd2f9a2347c3df696d7e8ddb5fe822225
 {
     public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '936a6ce1d0eb77cb51c0efeff494cb80' => __DIR__ . '/../..' . '/config/constant.php',
         'ed701d096da8375420f5b534a839f1fd' => __DIR__ . '/../..' . '/web/routes.php',
         'd3a1af9a886547b2b6aa434baf66532a' => __DIR__ . '/..' . '/zero/libs/functions.php',
@@ -17,6 +20,12 @@ class ComposerStaticInitd2f9a2347c3df696d7e8ddb5fe822225
         array (
             'Zero\\Route\\' => 11,
             'Zero\\' => 5,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Php80\\' => 23,
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Component\\VarDumper\\' => 28,
         ),
         'A' => 
         array (
@@ -33,10 +42,28 @@ class ComposerStaticInitd2f9a2347c3df696d7e8ddb5fe822225
         array (
             0 => __DIR__ . '/..' . '/zero',
         ),
+        'Symfony\\Polyfill\\Php80\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Component\\VarDumper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+    );
+
+    public static $classMap = array (
+        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -44,6 +71,7 @@ class ComposerStaticInitd2f9a2347c3df696d7e8ddb5fe822225
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitd2f9a2347c3df696d7e8ddb5fe822225::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitd2f9a2347c3df696d7e8ddb5fe822225::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitd2f9a2347c3df696d7e8ddb5fe822225::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -8,5 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'Zero\\Route\\' => array($vendorDir . '/zero/routing'),
     'Zero\\' => array($vendorDir . '/zero'),
+    'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
     'App\\' => array($baseDir . '/app'),
 );

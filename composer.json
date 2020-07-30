@@ -22,6 +22,8 @@
             "web/routes.php",
             "vendor/zero/libs/functions.php"
         ]
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.1"
     }
-    
 }

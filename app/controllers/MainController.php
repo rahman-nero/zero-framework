@@ -11,6 +11,7 @@ class MainController extends AppController
 	public function indexAction()
 	{
 		$product = new Main();
+		dd($product);
 		$this->setMeta('asdasd', 'asdasdad', 'asdasdasd');
 	}
 }
