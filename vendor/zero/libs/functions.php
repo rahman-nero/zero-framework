@@ -23,3 +23,14 @@ function is_assoc($var)
 {
   return is_array($var) && array_diff_key($var,array_keys(array_keys($var)));
 }
+
+// connection any view 
+function view($path) {
+	$file = APP . '/views/' . ltrim($path, '/');
+	if (is_file($file)) {
+		require $file;
+		die();
+	} else {
+		echo 'Ошибка - не нашли такой вид ' . $file;	
+	}
+}

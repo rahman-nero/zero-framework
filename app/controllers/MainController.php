@@ -12,7 +12,6 @@ class MainController extends AppController
 	{
 		$product = new Main();
 		$this->setMeta('asdasd', 'asdasdad', 'asdasdasd');
-		dd($result);
 	}
 }
 

@@ -18,13 +18,13 @@ abstract class Router
 
 	protected static function match($url) {
     	foreach (self::$routes as $pattern => $options) {
-    		if (preg_match("#{$pattern}#", $url, $match)) {
+    		if (preg_match("#{$pattern}#i", $url, $match)) {
     				foreach ($match as $k => $v) {
     					if (is_string($k)) 
     						$route[$k] = $v; 
     				}
 
-    				$route['controller'] = $options['controller'] ?? $route['controller'];
+               $route['controller'] = self::upperCamelCase($options['controller']) ?? self::upperCamelCase($route['controller']);
 
     				if (!isset($route['action'])) 
 	    				$route['action'] = $options['action'] ?? 'index';
@@ -42,7 +42,7 @@ abstract class Router
 		$url = self::removeQueryString($url);
 		if (self::match($url)) {
 			$controller = "App\\controllers\\" . self::$route['controller'] . 'Controller';
-			$action = self::$route['action'] . 'Action';
+			$action = self::lowerCamelCase(self::$route['action']) . 'Action';
 
 			if (class_exists($controller)) {
 				$cObj = new $controller(self::$route);
@@ -55,7 +55,7 @@ abstract class Router
 				}
 
 			} else {
-				echo "Такой контроллер не найден {$url}";
+				echo "Такой контроллер, и метод не найден {$url}";
 			}
 		} else {
 			echo 'Страница не найдена';
@@ -63,8 +63,18 @@ abstract class Router
 	}
 
 
-	protected static function removeQueryString($url) {
-		if($url){
+	    // CamelCase
+    protected static function upperCamelCase($name){
+        return str_replace(' ', '', ucwords(str_replace('-', ' ', $name)));
+    }
+
+    // camelCase
+    protected static function lowerCamelCase($name){
+        return lcfirst(self::upperCamelCase($name));
+    }
+
+    protected static function removeQueryString($url){
+        if($url){
             $params = explode('&', $url, 2);
             if(false === strpos($params[0], '=')){
                 return rtrim($params[0], '/');
@@ -72,7 +82,7 @@ abstract class Router
                 return '';
             }
         }
-	}
+    }
 
 } 
 
