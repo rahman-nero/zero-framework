@@ -69,6 +69,26 @@ abstract class Model
 	}
 
 
+	/*
+	* Функция делает запрос на удаления строки из бд - SQL DELETE 
+	* $field - это поле по которому производится поиск, для удаления например: WHERE $field
+	* $equal - это для WHERE $field = $equal
+	* Если вместо $equal - строки передать список, будет выполнен запрос с использованием IN($equal)
+	*/
+	public function delete(string $field, $equal)
+	{
+		$values = '';
+		if (is_array($equal)) {
+			foreach ($equal as $val) {
+				$values  .= is_numeric($val) ? $val . ',' : "'$val',";
+			}
+			$values  = rtrim($values, ',');
+			$sql = "DELETE FROM {$this->table} WHERE {$field} IN($values)";
+		} else {
+			$sql = "DELETE FROM {$this->table} WHERE {$field} = '$equal'";
+		}
+		return $this->db->execute($sql);
+	}
 
 
 

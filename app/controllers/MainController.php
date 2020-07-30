@@ -11,7 +11,7 @@ class MainController extends AppController
 	public function indexAction()
 	{
 		$product = new Main();
-		$result = $product->findOne('`id` = 2');
+		// $result = $product->delete('`id`', [1,2,3, 'asdasd']);
 		dd($result);
 	}
 }
