@@ -7,6 +7,10 @@ use Zero\base\Model;
  */
 class Main extends Model
 {
-	public $table = 'product';		
+	protected $table = 'product';
+	protected $routes = [
+		'id',
+		'title'
+	];	
 }
 
